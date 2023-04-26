@@ -25,7 +25,7 @@ class _picture_apiState extends State<picture_api> {
     var data = jsonDecode(Response.body.toString());
     if (Response.statusCode == 200) {
       for (Map i in data) {
-        picture pic = picture(i['title'], i['url']);
+        picture pic = picture(i['title'], i['url'] , i['id']);
         picturelist.add(pic);
       }
       return picturelist;
@@ -37,10 +37,29 @@ class _picture_apiState extends State<picture_api> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      appBar: AppBar(
-        title: Text('Picture Api'),
-      ),
-      body: ListView.builder(itemBuilder: (context, index) {}),
-    );
+        appBar: AppBar(
+          title: Text('Picture Api'),
+        ),
+        body: Column(
+          children: [
+            Expanded(
+              child: FutureBuilder(
+                future: getpictures(),
+                builder: ((context, AsyncSnapshot<List<picture>> snapshot) {
+                return ListView.builder(
+                  itemCount: picturelist.length,
+                  itemBuilder: (context, index) {
+                  return ListTile(
+                    leading: CircleAvatar(
+                      backgroundImage: NetworkImage(snapshot.data![index].url.toString()),
+                    ),
+                    title: Text(snapshot.data![index].title.toString()),
+                    subtitle: Text(snapshot.data![index].id.toString()),
+                  );
+                });
+              })),
+            )
+          ],
+        ));
   }
 }

@@ -17,7 +17,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: homepage.routename,
+      initialRoute: picture_api.routename,
       routes: {
         homepage.routename: (context) => const homepage(),
         picture_api.routename:(context) => const picture_api(),
