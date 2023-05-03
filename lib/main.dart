@@ -2,6 +2,7 @@ import 'package:coivd_tracker_api/complexJson.dart';
 import 'package:coivd_tracker_api/homepag.dart';
 import 'package:coivd_tracker_api/pictutre_api.dart';
 import 'package:coivd_tracker_api/product_api.dart';
+import 'package:coivd_tracker_api/signup.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,12 +20,13 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: Product.routename,
+      initialRoute: SIgnup.routename,
       routes: {
         homepage.routename: (context) => const homepage(),
         picture_api.routename:(context) => const picture_api(),
         complexJson.routename:(context) => const complexJson(),
         Product.routename : (context) => const Product(),
+        SIgnup.routename : (context) => const SIgnup(),
       },
     );
   }
