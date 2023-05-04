@@ -1,8 +1,8 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/src/widgets/framework.dart';
 import 'package:flutter/src/widgets/placeholder.dart';
-import 'package:http/http.dart';
 import 'package:http/http.dart' as http;
+import 'package:http/http.dart';
 
 class SIgnup extends StatefulWidget {
   const SIgnup({super.key});
@@ -18,14 +18,15 @@ class _SIgnupState extends State<SIgnup> {
     TextEditingController emailcontroler = TextEditingController();
     TextEditingController passwordcontroller = TextEditingController();
 
-    void auth(String email, String password) async {
+    void auth(String email,  password) async {
       try {
         Response response =
             await post(Uri.parse('https://reqres.in/api/register'), body: {
           'email': email,
           'password': password,
         });
-
+        
+        print(response.statusCode);
         if (response.statusCode == 200) {
           print('Account Created Successfully');
         } else {
@@ -65,12 +66,13 @@ class _SIgnupState extends State<SIgnup> {
           TextButton(
               style: TextButton.styleFrom(
                 backgroundColor: Colors.blue,
+                
                 shape: RoundedRectangleBorder(
                   borderRadius: BorderRadius.circular(20),
                 ),
               ),
-              onPressed: auth(emailcontroler.toString(), passwordcontroller.toString()),
-              child: Text('Sign Up'))
+              onPressed: () => auth(emailcontroler.text.toString() , passwordcontroller.text.toString()),
+              child: const Text('Sign Up', style: TextStyle(color: Colors.white),))
         ],
       ),
     );
