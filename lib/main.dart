@@ -29,6 +29,7 @@ class MyApp extends StatelessWidget {
         Product.routename : (context) => const Product(),
         Login.routename : (context) => const Login(),
         SIgnup.routename : (context) => const SIgnup(),
+        picture_api.routename : (context) => const picture_api(),
       },
     );
   }
