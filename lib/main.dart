@@ -1,6 +1,7 @@
 import 'package:coivd_tracker_api/complexJson.dart';
 import 'package:coivd_tracker_api/homepag.dart';
 import 'package:coivd_tracker_api/login.dart';
+import 'package:coivd_tracker_api/picture_upload.dart';
 import 'package:coivd_tracker_api/pictutre_api.dart';
 import 'package:coivd_tracker_api/product_api.dart';
 import 'package:coivd_tracker_api/signup.dart';
@@ -21,7 +22,7 @@ class MyApp extends StatelessWidget {
       theme: ThemeData(
         primarySwatch: Colors.blue,
       ),
-      initialRoute: SIgnup.routename,
+      initialRoute: pic_upload.routename,
       routes: {
         homepage.routename: (context) => const homepage(),
         picture_api.routename:(context) => const picture_api(),
@@ -30,6 +31,7 @@ class MyApp extends StatelessWidget {
         Login.routename : (context) => const Login(),
         SIgnup.routename : (context) => const SIgnup(),
         picture_api.routename : (context) => const picture_api(),
+        pic_upload.routename : (context) => const pic_upload(),
       },
     );
   }
